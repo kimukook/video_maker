@@ -3,6 +3,8 @@ This is a opencv-based python repo that creates the video based on the images in
 ## Dependencies
 os
 
+re
+
 argparse
 
 opencv=='4.1.2'
@@ -11,7 +13,8 @@ opencv=='4.1.2'
 ``python3 video_maker.py --folder_path <the path of folder> --image_type '.png' --video_name 'video.avi'``
 
 ## Credits
-https://stackoverflow.com/questions/44947505/how-to-make-a-movie-out-of-images-in-python
+video creation: https://stackoverflow.com/questions/44947505/how-to-make-a-movie-out-of-images-in-python
+images sorting: https://stackoverflow.com/questions/58853388/how-do-i-preserve-the-order-of-images-while-creating-video-in-python
 
 ## License
 MIT © Muhan Zhao
