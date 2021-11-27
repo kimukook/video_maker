@@ -10,6 +10,17 @@ Location:  UC San Diego, La Jolla, CA
 import cv2
 import os
 import argparse
+import re
+
+
+def natural_sort_key(s, _nsre=re.compile('([0-9]+)')):
+    """
+    Sort images based on the digits/number in the image file name
+    :param s    :
+    :param _nsre:
+    :return:
+    """
+    return [int(text) if text.isdigit() else text.lower() for text in _nsre.split(s)]
 
 
 def video_maker(folder_path, video_name, image_type, save_path, quiet=True):
@@ -38,13 +49,14 @@ def video_maker(folder_path, video_name, image_type, save_path, quiet=True):
         save_path = folder_path
 
     images = [img for img in os.listdir(folder_path) if img.endswith(image_type)]
+    sorted_images = sorted(images, key=natural_sort_key)
 
-    frame = cv2.imread(os.path.join(folder_path, images[0]))
+    frame = cv2.imread(os.path.join(folder_path, sorted_images[0]))
     height, width, layers = frame.shape
 
     video = cv2.VideoWriter(os.path.join(save_path, video_name), 0, 1, (width, height))
 
-    for i, image in enumerate(images):
+    for i, image in enumerate(sorted_images):
         if not quiet:
             print(f' processing image No.{i}....')
         video.write(cv2.imread(os.path.join(folder_path, image)))
