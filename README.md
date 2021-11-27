@@ -1,5 +1,6 @@
 # video_maker
-This is a opencv-based python repo that creates the video based on the images in the given folder. For how to use, please see the detailed documentation info in ``video_maker.py``
+This is a opencv-based python repo that creates the video based on the images in the given folder. For more info, please check the detailed documentation in ``video_maker.py``
+
 ## Dependencies
 os
 
